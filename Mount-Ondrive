@@ -1,0 +1,35 @@
+First mount
+-----------
+
+rclone listremotes
+mkdir ~/Bureau/Onedrive
+rclone mount <nom_du_remote>: /chemin/vers/le/dossier/local --vfs-cache-mode full
+
+Permanent mount
+---------------
+
+sudo nano /etc/fuse.conf
+user_allow_other
+sudo nano /etc/systemd/system/rclone-onedrive.service
+
+[Unit]
+Description=Rclone OneDrive Mount
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=yaabaa
+ExecStart=/usr/bin/rclone mount OneDrive: /home/yaabaa/Bureau/OneDrive/ --vfs-cache-mode writes --allow-other
+ExecStop=/bin/fusermount -u /home/yaabaa/Bureau/OneDrive/
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+
+sudo systemctl enable rclone-onedrive
+sudo systemctl start rclone-onedrive
+
+

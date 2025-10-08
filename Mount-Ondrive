@@ -20,8 +20,8 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=yaabaa
-ExecStart=/usr/bin/rclone mount OneDrive: /home/yaabaa/Bureau/OneDrive/ --vfs-cache-mode writes --allow-other
-ExecStop=/bin/fusermount -u /home/yaabaa/Bureau/OneDrive/
+ExecStart=/usr/bin/rclone mount OneDrive: /home/utilisateur/Bureau/OneDrive/ --vfs-cache-mode writes --allow-other
+ExecStop=/bin/fusermount -u /home/utilisateur/Bureau/OneDrive/
 Restart=always
 RestartSec=10
 

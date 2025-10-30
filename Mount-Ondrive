@@ -15,7 +15,7 @@ sudo nano /etc/systemd/system/rclone-onedrive.service
 [Unit]
 Description=Rclone OneDrive Mount
 After=network-online.target
-Wants=network-online.target
+Wants=network-online.target 
 
 [Service]
 Type=simple
